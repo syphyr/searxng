@@ -23,6 +23,17 @@ services:
       - core-data:/var/cache/searxng/
     networks:
       - ollama-net
+    depends_on:
+      - tor
+      - valkey
+
+  tor:
+    build:
+      context: ./tor-gateway
+    container_name: searxng-tor
+    restart: always
+    networks:
+      - ollama-net
 
   valkey:
     container_name: searxng-valkey
