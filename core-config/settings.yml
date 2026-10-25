@@ -17,3 +17,11 @@ engines:
     inactive: true
   - name: torch
     inactive: true
+
+outgoing:
+  request_timeout: 10.0
+  max_request_timeout: 30.0
+  proxies:
+    all://:
+      - socks5h://tor:9050
+  using_tor_proxy: true
