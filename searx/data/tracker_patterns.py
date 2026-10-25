@@ -86,7 +86,7 @@ class TrackerPatternsDB:
         for url in self.CLEAR_LIST_URL:
             log.debug("TRACKER_PATTERNS: Trying to fetch %s...", url)
             try:
-                resp = http_get(url, timeout=3)
+                resp = http_get(url, timeout=10)
 
             except RequestException as exc:
                 log.warning("TRACKER_PATTERNS: RequestException while fetching %s: %s", url, exc)
