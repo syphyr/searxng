@@ -24,8 +24,10 @@ services:
     networks:
       - ollama-net
     depends_on:
-      - tor
-      - valkey
+      valkey:
+        condition: service_started
+      tor:
+        condition: service_started
 
   tor:
     build:
