@@ -26,13 +26,13 @@ services:
     depends_on:
       valkey:
         condition: service_started
-      tor:
+      arti:
         condition: service_started
 
-  tor:
+  arti:
     build:
-      context: ./tor-gateway
-    container_name: searxng-tor
+      context: ./arti-gateway
+    container_name: searxng-arti
     restart: always
     networks:
       - ollama-net
