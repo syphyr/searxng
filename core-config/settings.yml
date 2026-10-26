@@ -23,6 +23,7 @@ outgoing:
   request_timeout: 20.0
   max_request_timeout: 30.0
   using_tor_proxy: true
+  check_network: false
   proxies:
     all://:
-      - socks5h://searxng-tor:9050
+      - socks5h://searxng-arti:9050
