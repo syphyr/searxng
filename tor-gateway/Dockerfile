@@ -42,11 +42,12 @@ COPY --from=builder /usr/local/bin/tor /usr/local/bin/tor
 # Write the runtime configurations to open SOCKS5 on all interfaces inside the container
 RUN mkdir -p /etc/tor && \
     echo "SocksPort 0.0.0.0:9050" > /etc/tor/torrc && \
+    echo "HTTPTunnelPort 0.0.0.0:8118" >> /etc/tor/torrc && \
     echo "DataDirectory /var/lib/tor" >> /etc/tor/torrc && \
     echo "RunAsDaemon 0" >> /etc/tor/torrc
 
 # Isolate execution under the unprivileged 'nobody' user for secure execution
 USER nobody
-EXPOSE 9050
+EXPOSE 9050 8118
 
 CMD ["tor"]
