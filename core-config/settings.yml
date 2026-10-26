@@ -15,7 +15,7 @@ search:
 
 engines:
   - name: ahmia
-    inactive: true
+    inactive: false
   - name: torch
     inactive: true
 
