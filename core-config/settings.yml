@@ -6,6 +6,7 @@ use_default_settings: true
 server:
   secret_key: "hBwNyhmpyD7xIT3Ih6AgBUISKg4vm"
   image_proxy: true
+  base_url: false
 
 search:
   formats:
@@ -19,9 +20,9 @@ engines:
     inactive: true
 
 outgoing:
-  request_timeout: 10.0
+  request_timeout: 20.0
   max_request_timeout: 30.0
+  using_tor_proxy: true
   proxies:
     all://:
-      - socks5h://tor:9050
-  using_tor_proxy: true
+      - socks5h://searxng-tor:9050
