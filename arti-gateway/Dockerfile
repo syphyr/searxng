@@ -30,12 +30,6 @@ RUN groupadd -g 10022 _arti && \
 # 4a. Open up the proxy listener to accept both IPv4 and IPv6 traffic across ollama-net
 RUN sed -ri 's/^#socks_listen.+/socks_listen = ["0.0.0.0:9050", "[::]:9050"]/' /etc/arti.toml
 
-# 4b. TUNING ENGINE: Surgically override default settings with performance parameters
-RUN sed -ri 's/^#stream_isolation = .+/stream_isolation = "none"/' /etc/arti.toml && \
-    sed -ri 's/^#max_unused_duration = "3m"/max_unused_duration = "5m"/' /etc/arti.toml && \
-    sed -ri 's/^#max_circuit_dirtiness = "10m"/max_circuit_dirtiness = "20m"/' /etc/arti.toml && \
-    sed -ri 's/^#parallelism = 3/parallelism = 4/' /etc/arti.toml
-
 # 5. Clean up the source tree to save image space
 RUN rm -rf /workspace/arti
 
